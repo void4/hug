@@ -95,6 +95,12 @@ def user(default=None, request=None, **kwargs):
 
 
 @_built_in_directive
+def payment(default=None, request=None, **kwargs):
+    """Returns the current logged in user"""
+    return request and request.context.get('payment', None) or default
+
+
+@_built_in_directive
 class CurrentAPI(object):
     """Returns quick access to all api functions on the current version of the api"""
     __slots__ = ('api_version', 'api')
